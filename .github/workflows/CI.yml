@@ -6,5 +6,4 @@ jobs:
     name: Hello World
     runs-on: ubuntu-latest
     steps:
-      -name: Say Hello
-      -run: echo "Hello World"
+      - run: echo "Hello World"
