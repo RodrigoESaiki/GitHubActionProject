@@ -23,10 +23,46 @@ jobs:
     - name: Build
       run: |
         set -o pipefail
-        xcodebuild build \
+        xcodebuild build-for-testing \
         -scheme GitHubActionProject \
         -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
+        -derivedDataPath build \
         | xcpretty
+
+    - name: Archive drived data artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: build
+  
+ test_process:
+    name: Test Process
+    needs: build
+    runs-on: macOS-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v1
+
+    - name: Set Gems
+      run: |
+        gem install bundler
+        bundle install
+
+    - name: Download derived data artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: build
+
+    - name: Test
+      run: |
+        set -o pipefail
+        xcodebuild test-without-building \
+        -scheme GitHubActionProject \
+        -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
+        -derivedDataPath build \
+        | xcpretty
+
+        
 
 
 
