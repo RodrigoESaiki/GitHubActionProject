@@ -37,7 +37,7 @@ jobs:
 
   test_process:
     name: Test Process
-    needs: build
+    needs: build_process
     runs-on: macOS-latest
     steps:
     - name: Checkout repository
