@@ -13,17 +13,19 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@main
+      uses: actions/checkout@v1
 
     - name: Set Gems
       run: |
         gem install bundler
         bundle install
-
+   
     - name: Build
       run: |
         set -o pipefail
-        xcodebuild build -project GitHubActionProject.xcodeproj -scheme GitHubActionProject -destination "platform=iOS Simulator,name=iPhone 11 Pro"
+        xcodebuild build \
+        -scheme iOSGitHubActions \
+        -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
         | xcpretty
 
 
