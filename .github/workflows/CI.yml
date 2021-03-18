@@ -32,3 +32,4 @@ jobs:
         -scheme GitHubActionProject \
         -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest" \
         | xcpretty
+
