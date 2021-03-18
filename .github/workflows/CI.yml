@@ -2,9 +2,9 @@ name: Run CI
 on: [push, pull_request]
 
 jobs:
-  hello:
+  say_hello:
     name: Hello World
     runs-on: ubuntu-latest
     steps:
       -name: Say Hello
-       run: echo Hello Word
+      -run: echo "Hello World"
