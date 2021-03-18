@@ -28,8 +28,8 @@ jobs:
     - name: Build
       run: |
         set -o pipefail
-        xcodebuild build \
-        -scheme GitHubActionProject \
-        -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest" \
+        xcodebuild build -project GitHubActionProject.xcodeproj -scheme GitHubActionProject -destination "platform=iOS Simulator,name=iPhone 11 Pro"
         | xcpretty
+
+
 
