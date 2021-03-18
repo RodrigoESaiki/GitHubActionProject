@@ -34,8 +34,8 @@ jobs:
       with:
         name: build
         path: build
-        
- test_process:
+
+  test_process:
     name: Test Process
     needs: build
     runs-on: macOS-latest
